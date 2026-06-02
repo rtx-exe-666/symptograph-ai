@@ -5,6 +5,7 @@ import PrescriptionScanner from "@/components/PrescriptionScanner";
 import SymptoGraph from "@/components/SymptoGraph";
 import MedicalReportCard from "@/components/MedicalReportCard";
 import IntakeTracker from "@/components/IntakeTracker";
+import MedicalChatbot from "@/components/MedicalChatbot";
 
 export default function DashboardHome() {
   const [scanResult, setScanResult] = useState(null);
@@ -242,6 +243,9 @@ export default function DashboardHome() {
           </span>
         </div>
       )}
+
+      {/* Floating conversational chatbot */}
+      <MedicalChatbot documentContext={scanResult} />
     </div>
   );
 }
