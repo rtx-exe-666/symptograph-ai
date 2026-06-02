@@ -246,6 +246,13 @@ export default function DashboardHome() {
 
       {/* Floating conversational chatbot */}
       <MedicalChatbot documentContext={scanResult} />
+
+      {/* Floating Team Watermark */}
+      <div className="floating-watermark" title="SymptoGraph AI Hackathon Team">
+        <span className="watermark-team">📟 The Nexus Assassins</span>
+        <span className="watermark-sep">|</span>
+        <span className="watermark-leader">Kuldeep Singh (Leader)</span>
+      </div>
     </div>
   );
 }
