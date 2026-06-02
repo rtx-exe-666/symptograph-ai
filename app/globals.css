@@ -1182,7 +1182,171 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(34, 197, 94, 0.2);
     opacity: 0.95;
   }
+}/* ================================================
+   PDF Export Button
+   ================================================ */
+.pdf-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 8px;
+  color: #10b981;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-inter);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.pdf-export-btn:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(5, 150, 105, 0.2));
+  border-color: rgba(16, 185, 129, 0.8);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
+  color: #a7f3d0;
+  transform: translateY(-1px);
+}
+
+.pdf-export-btn:active {
+  transform: translateY(0);
 }
 
 
+/* ================================================
+   @media print — Vector PDF Export Layout
+   ================================================ */
+@media print {
+
+  /* Force white page for print engine */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+    font-size: 11pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide all elements except the medical report card */
+  canvas,
+  .dashboard-header,
+  .scan-history-bar,
+  .grid-left,
+  .intake-tracker-panel,
+  .translate-bar,
+  .translating-indicator,
+  .global-analyzer-overlay,
+  .chatbot-trigger-btn,
+  .chatbot-drawer,
+  .floating-watermark,
+  footer,
+  .hud-status-panel,
+  .status-dot {
+    display: none !important;
+  }
+
+  /* Expand the report area to full page */
+  .dashboard-container,
+  .dashboard-grid,
+  .grid-right {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Report card overrides */
+  .report-card,
+  .glass-panel {
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 16pt 20pt !important;
+    page-break-inside: avoid;
+  }
+
+  /* Force dark text readable on white background */
+  h1, h2, h3, h4, h5, h6 {
+    color: #111827 !important;
+  }
+
+  p, span, li, td, th, label {
+    color: #374151 !important;
+  }
+
+  .text-cyan-400,
+  .text-emerald-400,
+  .text-amber-400,
+  .text-gray-200,
+  .text-gray-300,
+  .text-gray-400 {
+    color: #374151 !important;
+  }
+
+  .glow-text {
+    color: #111827 !important;
+    text-shadow: none !important;
+  }
+
+  /* Report header / confidence bar */
+  .report-header {
+    border-bottom: 2px solid #06b6d4 !important;
+    margin-bottom: 12pt !important;
+    padding-bottom: 8pt !important;
+  }
+
+  .confidence-bar-fill {
+    background: #06b6d4 !important;
+  }
+
+  /* Medicine cards */
+  .med-details-card {
+    border: 1px solid #d1d5db !important;
+    background: #f9fafb !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  /* Vital markers */
+  .vital-badge-high   { background: #fee2e2 !important; color: #991b1b !important; }
+  .vital-badge-low    { background: #fef3c7 !important; color: #92400e !important; }
+  .vital-badge-normal { background: #d1fae5 !important; color: #065f46 !important; }
+
+  /* Print-only header branding stamp */
+  .report-card::before {
+    content: "SymptoGraph AI — Medical Report Export";
+    display: block;
+    font-size: 8pt;
+    color: #9ca3af;
+    text-align: right;
+    margin-bottom: 8pt;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 4pt;
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* Page margin control */
+  @page {
+    margin: 18mm 15mm;
+    size: A4 portrait;
+  }
+}
 

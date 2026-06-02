@@ -226,6 +226,14 @@ export default function MedicalReportCard({ data }) {
           >
             🔊 {playingAudio ? "Reading..." : "Read Aloud"}
           </button>
+
+          <button
+            onClick={() => window.print()}
+            className="pdf-export-btn"
+            title="Export this report as a clean PDF"
+          >
+            🖨️ Export PDF
+          </button>
         </div>
       </div>
 
